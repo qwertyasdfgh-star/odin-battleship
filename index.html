@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship - Dark Naval Edition</title>
+    <link rel="stylesheet" href="styles.css">
+<script defer src="main.js"></script></head>
+<body>
+    <!-- Homepage -->
+    <div id="homepage" class="homepage">
+        <div class="homepage-content">
+            <h1 class="title">BATTLESHIP</h1>
+            <p class="subtitle">Enter your name to begin the naval battle!</p>
+            <form id="name-form">
+              <input type="text" id="player-name" placeholder="Enter your name, Admiral" required>
+              <button type="submit" class="btn start-btn">Start Game</button>
+          </form>
+            <p class="instructions">Place your ships, sink the enemy fleet, and claim victory!</p>
+        </div>
+    </div>
+    <script type="module">
+
+      import { setupUI } from '../src/dom.js';
+      import { initGame } from '../src/game.js';
+  
+      document.getElementById('name-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const playerName = document.getElementById('player-name').value.trim() || 'Admiral';
+  
+          document.getElementById('homepage').style.display = 'none';
+
+          setupUI();
+          initGame(playerName);
+      });
+  </script>
+</body>
+</html>
